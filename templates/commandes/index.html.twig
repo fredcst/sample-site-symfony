@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommandesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class="text-3xl mb-7">Commandes</h1>
+    <div class="border border-gray-200 rounded-xl relative">
+        <a class="absolute top-5 right-5 text-white bg-blue-500 box-border border border-transparent hover:bg-blue-700 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium transition rounded-md text-sm px-3 py-2 focus:outline-none" href="#">
+            Nouvelle commande
+        </a>
+        <table class="w-full text-sm text-left rtl:text-right text-body">
+            <div class="flex justify-between w-full">
+                <caption class="p-5 text-lg font-medium text-left rtl:text-right text-heading">
+                    Vos commandes
+                    <p class="mt-1.5 text-sm font-normal text-body text-gray-500">Description du card</p>
+                </caption>
+            </div>
+            <thead class="text-sm text-gray-600 bg-gray-100 border-b-gray-900 border-t border-default-medium">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Title
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Author
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Date
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    <span class="sr-only">Edit</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for commande in userCommandes %}
+                <tr class="bg-neutral-primary-soft border-b-gray-900">
+                    <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                        {{ commande.id }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ commande.title }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ commande.createdBy.email }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ commande.createdAt|date('d M Y H:i') }}
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <a href="#" class="text-blue-700 font-medium hover:underline">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
