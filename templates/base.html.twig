@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="w-screen h-screen">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -11,7 +11,22 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="min-w-screen flex flex-col min-h-screen">
+        <header class="flex min-w-screen">
+            <nav class="bg-gray-800 py-4 w-screen">
+                <div class="container mx-auto flex justify-between items-center px-4">
+                    <div>
+                        <h1 class="text-white text-2xl font-bold">Ostcom</h1>
+                    </div>
+                    <a class="text-gray-400 hover:text-white" href={{ path('app_logout') }}>Logout</a>
+                </div>
+            </nav>
+        </header>
+        <main class="container mx-auto mt-8 grow">
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="bg-gray-800 py-4">
+            <p class="text-center text-white">© Ostcom 2026</p>
+        </footer>
     </body>
 </html>
