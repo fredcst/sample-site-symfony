@@ -69,7 +69,7 @@ final class CommandesController extends AbstractController
     }
 
     #[Route('/api/user/{user_id}/commandes', name: 'api_commandes_user')]
-    public function userCommandes($user_id, UserInterface $user, CommandeRepository $commandeRepository): Response
+    public function userCommandes($user_id, CommandeRepository $commandeRepository): Response
     {
         $commandes = $commandeRepository->findBy(['createdBy' => $user_id]);
 

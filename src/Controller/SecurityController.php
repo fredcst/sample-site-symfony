@@ -30,6 +30,12 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/api', name: 'app_api')]
+    public function api() : Response
+    {
+        return new Response(sprintf('Logged in as %s', $this->getUser()->getUserIdentifier()));
+    }
+
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
